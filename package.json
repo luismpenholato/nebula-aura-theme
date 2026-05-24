@@ -1,0 +1,69 @@
+{
+  "name": "nebula-aura-theme",
+  "displayName": "Nebula Aura Theme",
+  "description": "A modern light, dark and violet theme pack for VS Code, Cursor and Antigravity, inspired by Omni.",
+  "version": "0.0.1",
+  "publisher": "nebula-themes",
+  "license": "MIT",
+  "pricing": "Free",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "dark theme",
+    "light theme",
+    "violet theme",
+    "purple theme",
+    "vscode theme",
+    "cursor theme",
+    "antigravity theme",
+    "antigravity",
+    "nebula",
+    "aura",
+    "color theme"
+  ],
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#171320",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luismpenholato/nebula-aura-theme.git"
+  },
+  "bugs": {
+    "url": "https://github.com/luismpenholato/nebula-aura-theme/issues"
+  },
+  "homepage": "https://github.com/luismpenholato/nebula-aura-theme#readme",
+  "contributes": {
+    "themes": [
+      {
+        "label": "Nebula Aura Light",
+        "uiTheme": "vs",
+        "path": "./themes/nebula-aura-light-color-theme.json"
+      },
+      {
+        "label": "Nebula Aura Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/nebula-aura-dark-color-theme.json"
+      },
+      {
+        "label": "Nebula Aura Violet",
+        "uiTheme": "vs-dark",
+        "path": "./themes/nebula-aura-violet-color-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "list": "vsce ls",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.3.2"
+  }
+}
