@@ -1,7 +1,7 @@
 # Nebula Aura Theme
 
-[![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/nebula-themes.nebula-aura-theme?label=VS%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=nebula-themes.nebula-aura-theme)
-[![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/nebula-themes.nebula-aura-theme?label=VS%20Marketplace%20installs)](https://marketplace.visualstudio.com/items?itemName=nebula-themes.nebula-aura-theme)
+[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=nebula-themes.nebula-aura-theme)
+
 [![Open VSX Downloads](https://img.shields.io/open-vsx/dt/nebula-themes/nebula-aura-theme?label=Open%20VSX%20downloads)](https://open-vsx.org/extension/nebula-themes/nebula-aura-theme)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
