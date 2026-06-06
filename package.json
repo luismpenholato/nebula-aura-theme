@@ -14,17 +14,15 @@
   ],
   "keywords": [
     "theme",
+    "color-theme",
     "dark theme",
     "light theme",
     "violet theme",
-    "purple theme",
-    "vscode theme",
-    "cursor theme",
-    "antigravity theme",
-    "antigravity",
-    "nebula",
     "aura",
-    "color theme"
+    "nebula",
+    "cursor",
+    "antigravity",
+    "vscode"
   ],
   "icon": "images/icon.png",
   "galleryBanner": {

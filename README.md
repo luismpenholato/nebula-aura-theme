@@ -1,14 +1,33 @@
 # Nebula Aura Theme
 
-A modern theme pack with **three variations** for **Visual Studio Code**, **Cursor** and **Antigravity**:
+[![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/nebula-themes.nebula-aura-theme?label=VS%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=nebula-themes.nebula-aura-theme)
+[![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/nebula-themes.nebula-aura-theme?label=VS%20Marketplace%20installs)](https://marketplace.visualstudio.com/items?itemName=nebula-themes.nebula-aura-theme)
+[![Open VSX Downloads](https://img.shields.io/open-vsx/dt/nebula-themes/nebula-aura-theme?label=Open%20VSX%20downloads)](https://open-vsx.org/extension/nebula-themes/nebula-aura-theme)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-| Theme | UI base | Description |
-| --- | --- | --- |
-| **Nebula Aura Light** | `vs` | Soft light background with violet and cyan accents |
-| **Nebula Aura Dark** | `vs-dark` | Calm dark theme with blue-gray tones |
-| **Nebula Aura Violet** | `vs-dark` | Deep violet background with magenta and mint highlights |
+A modern light, dark and violet theme pack for VS Code, Cursor and Antigravity, inspired by Omni.
 
-The extension is distributed as a **`.vsix`** file — the standard format for VS Code-compatible editors.
+## Themes
+
+- **Nebula Aura Light** — soft light background with violet and cyan accents
+- **Nebula Aura Dark** — calm dark theme with blue-gray tones
+- **Nebula Aura Violet** — deep violet background with magenta and mint highlights
+
+## Install
+
+### Visual Studio Marketplace
+
+Install from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=nebula-themes.nebula-aura-theme):
+
+https://marketplace.visualstudio.com/items?itemName=nebula-themes.nebula-aura-theme
+
+### Open VSX
+
+Install from [Open VSX](https://open.vsx.org/extension/nebula-themes/nebula-aura-theme):
+
+https://open-vsx.org/extension/nebula-themes/nebula-aura-theme
+
+After installing, open the Command Palette (`Ctrl+Shift+P`) → **Preferences: Color Theme** → choose **Nebula Aura Light**, **Nebula Aura Dark** or **Nebula Aura Violet**.
 
 ## Compatibility
 
@@ -16,9 +35,9 @@ The extension is distributed as a **`.vsix`** file — the standard format for V
 | --- | --- |
 | [Visual Studio Code](https://code.visualstudio.com/) | Full |
 | [Cursor](https://cursor.com/) | Full |
-| [Antigravity](https://antigravity.dev/) | Full (VS Code fork, same `.vsix` format) |
+| [Antigravity](https://antigravity.dev/) | Full (VS Code fork, same extension format) |
 
-> Antigravity uses its own extensions folder. Installing the theme in VS Code or Cursor does **not** install it automatically in Antigravity — use the `.vsix` in each editor separately.
+> Antigravity uses its own extensions folder. Installing the theme in VS Code or Cursor does **not** install it automatically in Antigravity — install it separately in each editor.
 
 ## Previews
 
@@ -36,33 +55,32 @@ The extension is distributed as a **`.vsix`** file — the standard format for V
 
 ## Install from VSIX (local)
 
-1. Download `nebula-aura-theme-0.0.1.vsix` from the [GitHub Releases](https://github.com/luismpenholato/nebula-aura-theme/releases) page, or build it locally (see below).
-2. Open your editor.
-3. Go to **Extensions** → **...** → **Install from VSIX...**
-4. Select the `.vsix` file.
-5. Open the Command Palette (`Ctrl+Shift+P`) → **Preferences: Color Theme** → choose **Nebula Aura Light**, **Nebula Aura Dark** or **Nebula Aura Violet**.
+If you prefer a local install, download the `.vsix` from [GitHub Releases](https://github.com/luismpenholato/nebula-aura-theme/releases) or build it locally (see [Maintainer workflow](#maintainer-workflow)).
 
-### CLI install
+1. Open your editor.
+2. Go to **Extensions** → **...** → **Install from VSIX...**
+3. Select the `.vsix` file.
 
-**VS Code:**
+**CLI install:**
 
 ```bash
 code --install-extension nebula-aura-theme-0.0.1.vsix
-```
-
-**Cursor:**
-
-```bash
 cursor --install-extension nebula-aura-theme-0.0.1.vsix
-```
-
-**Antigravity** (if CLI is available):
-
-```bash
 antigravity --install-extension nebula-aura-theme-0.0.1.vsix
 ```
 
-## Build the VSIX locally
+## Publishing
+
+This extension is published to:
+
+- [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=nebula-themes.nebula-aura-theme)
+- [Open VSX Registry](https://open-vsx.org/extension/nebula-themes/nebula-aura-theme)
+
+Publishing is currently manual.
+
+## Maintainer workflow
+
+### Build the VSIX locally
 
 ```bash
 git clone https://github.com/luismpenholato/nebula-aura-theme.git
@@ -73,11 +91,9 @@ npm run package
 ```
 
 - `npm run list` — lists the files that will be included in the package (useful to verify nothing sensitive is bundled).
-- `npm run package` — generates `nebula-aura-theme-0.0.1.vsix` in the project root.
+- `npm run package` — generates `nebula-aura-theme-<version>.vsix` in the project root.
 
-## GitHub Release (manual)
-
-Automated publishing is **not** configured. To create a release manually:
+### GitHub Release (manual)
 
 1. Commit and push your changes.
 2. Generate the VSIX: `npm run package`
@@ -95,12 +111,6 @@ Automated publishing is **not** configured. To create a release manually:
    - **Publish release**
 
 The `.vsix` is **not** committed to the repository — attach it only to the GitHub Release.
-
-## Visual Studio Marketplace
-
-Publication to the [Visual Studio Marketplace](https://marketplace.visualstudio.com/) will be done **manually** in a future step. Do **not** use a ZIP file — the correct artifact is the `.vsix`.
-
-Before publishing, update `publisher` in `package.json` with your Marketplace publisher ID.
 
 ## Development
 
