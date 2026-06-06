@@ -19,13 +19,13 @@ A modern light, dark and violet theme pack for VS Code, Cursor and Antigravity, 
 
 Install from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=nebula-themes.nebula-aura-theme):
 
-https://marketplace.visualstudio.com/items?itemName=nebula-themes.nebula-aura-theme
+<https://marketplace.visualstudio.com/items?itemName=nebula-themes.nebula-aura-theme>
 
 ### Open VSX
 
 Install from [Open VSX](https://open.vsx.org/extension/nebula-themes/nebula-aura-theme):
 
-https://open-vsx.org/extension/nebula-themes/nebula-aura-theme
+<https://open-vsx.org/extension/nebula-themes/nebula-aura-theme>
 
 After installing, open the Command Palette (`Ctrl+Shift+P`) → **Preferences: Color Theme** → choose **Nebula Aura Light**, **Nebula Aura Dark** or **Nebula Aura Violet**.
 
@@ -35,9 +35,7 @@ After installing, open the Command Palette (`Ctrl+Shift+P`) → **Preferences: C
 | --- | --- |
 | [Visual Studio Code](https://code.visualstudio.com/) | Full |
 | [Cursor](https://cursor.com/) | Full |
-| [Antigravity](https://antigravity.dev/) | Full (VS Code fork, same extension format) |
-
-> Antigravity uses its own extensions folder. Installing the theme in VS Code or Cursor does **not** install it automatically in Antigravity — install it separately in each editor.
+| [Antigravity](https://antigravity.dev/) | Full |
 
 ## Previews
 
@@ -91,7 +89,7 @@ npm run package
 ```
 
 - `npm run list` — lists the files that will be included in the package (useful to verify nothing sensitive is bundled).
-- `npm run package` — generates `nebula-aura-theme-<version>.vsix` in the project root.
+- `npm run package` — generates `nebula-aura-theme-0.0.1.vsix` in the project root.
 
 ### GitHub Release (manual)
 
