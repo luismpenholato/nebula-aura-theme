@@ -2,7 +2,7 @@
   "name": "nebula-aura-theme",
   "displayName": "Nebula Aura Theme",
   "description": "A modern light, dark and violet theme pack for VS Code, Cursor and Antigravity, inspired by Omni.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "nebula-themes",
   "license": "MIT",
   "pricing": "Free",
@@ -59,9 +59,11 @@
   "scripts": {
     "list": "vsce ls",
     "package": "vsce package",
-    "publish": "vsce publish"
+    "publish:vsce": "vsce publish",
+    "publish:ovsx": "ovsx publish"
   },
   "devDependencies": {
-    "@vscode/vsce": "^3.9.2"
+    "@vscode/vsce": "^3.9.2",
+    "ovsx": "^1.0.1"
   }
 }

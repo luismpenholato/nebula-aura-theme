@@ -2,16 +2,31 @@ name: Publish Extension
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
+    branches:
+      - main
+    paths:
+      - package.json
+      - package-lock.json
+      - CHANGELOG.md
+      - README.md
+      - .vscodeignore
+      - "themes/**"
+      - "images/**"
+      - .github/workflows/ci.yml
+      - .github/workflows/publish.yml
 
 permissions:
   contents: write
 
+concurrency:
+  group: publish-extension
+  cancel-in-progress: false
+
 jobs:
   publish:
-    name: Publish to marketplaces
+    name: Tag, publish and release
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     env:
       VSCE_PAT: ${{ secrets.VSCE_PAT }}
@@ -19,32 +34,155 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
+      - name: Read package version
+        id: package
+        shell: bash
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          TAG="v${VERSION}"
+
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+
+          echo "Package version: ${VERSION}"
+          echo "Release tag: ${TAG}"
+
+      - name: Check if release tag already exists
+        id: tag
+        shell: bash
+        run: |
+          git fetch --tags
+
+          if git rev-parse "${{ steps.package.outputs.tag }}" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "Tag ${{ steps.package.outputs.tag }} already exists. Skipping publish."
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            echo "Tag ${{ steps.package.outputs.tag }} does not exist. Publishing will continue."
+          fi
+
+      - name: Stop if version was already released
+        if: steps.tag.outputs.exists == 'true'
+        run: |
+          echo "Version ${{ steps.package.outputs.version }} already has tag ${{ steps.package.outputs.tag }}."
+          echo "No publish or release will be created."
+
       - name: Install dependencies
+        if: steps.tag.outputs.exists == 'false'
         run: npm ci
 
       - name: List package files
+        if: steps.tag.outputs.exists == 'false'
         run: npm run list
 
       - name: Package VSIX
+        if: steps.tag.outputs.exists == 'false'
         run: npm run package
 
+      - name: Extract release notes from CHANGELOG
+        if: steps.tag.outputs.exists == 'false'
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+
+          const version = process.env.VERSION;
+          const changelogPath = 'CHANGELOG.md';
+          const outputPath = 'release-notes.md';
+
+          if (!fs.existsSync(changelogPath)) {
+            fs.writeFileSync(
+              outputPath,
+              `No CHANGELOG.md file was found for version ${version}.\n`,
+            );
+            process.exit(0);
+          }
+
+          const changelog = fs.readFileSync(changelogPath, 'utf8');
+          const escapedVersion = version.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+          const headingRegex = new RegExp(
+            `^## \\[${escapedVersion}\\].*$`,
+            'm',
+          );
+
+          const headingMatch = changelog.match(headingRegex);
+
+          if (!headingMatch || headingMatch.index === undefined) {
+            fs.writeFileSync(
+              outputPath,
+              `No changelog entry found for version ${version}.\n`,
+            );
+            process.exit(0);
+          }
+
+          const startIndex = headingMatch.index + headingMatch[0].length;
+          const remaining = changelog.slice(startIndex);
+
+          const nextHeadingMatch = remaining.match(/^## \[/m);
+          const notes = nextHeadingMatch
+            ? remaining.slice(0, nextHeadingMatch.index)
+            : remaining;
+
+          const trimmedNotes = notes.trim();
+
+          fs.writeFileSync(
+            outputPath,
+            trimmedNotes.length > 0
+              ? `${trimmedNotes}\n`
+              : `No changelog details found for version ${version}.\n`,
+          );
+          NODE
+        env:
+          VERSION: ${{ steps.package.outputs.version }}
+
+      - name: Validate marketplace tokens
+        if: steps.tag.outputs.exists == 'false'
+        shell: bash
+        run: |
+          if [ -z "$VSCE_PAT" ]; then
+            echo "VSCE_PAT secret is not configured."
+            exit 1
+          fi
+
+          if [ -z "$OVSX_PAT" ]; then
+            echo "OVSX_PAT secret is not configured."
+            exit 1
+          fi
+
       - name: Publish to Visual Studio Marketplace
-        run: npx @vscode/vsce publish --pat "$VSCE_PAT"
+        if: steps.tag.outputs.exists == 'false'
+        run: npm run publish:vsce -- --pat "$VSCE_PAT"
 
       - name: Publish to Open VSX
-        run: npx ovsx publish --pat "$OVSX_PAT"
+        if: steps.tag.outputs.exists == 'false'
+        run: npm run publish:ovsx -- --pat "$OVSX_PAT"
+
+      - name: Create git tag
+        if: steps.tag.outputs.exists == 'false'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git tag "${{ steps.package.outputs.tag }}"
+          git push origin "${{ steps.package.outputs.tag }}"
 
       - name: Create GitHub Release
+        if: steps.tag.outputs.exists == 'false'
         uses: softprops/action-gh-release@v2
         with:
-          name: Nebula Aura Theme ${{ github.ref_name }}
+          tag_name: ${{ steps.package.outputs.tag }}
+          name: Nebula Aura Theme ${{ steps.package.outputs.tag }}
+          body_path: release-notes.md
           files: "*.vsix"
-          generate_release_notes: true
