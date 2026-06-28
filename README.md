@@ -7,19 +7,26 @@
 [![Open VSX Downloads](https://img.shields.io/open-vsx/dt/nebula-themes/nebula-aura-theme?label=Open%20VSX%20downloads)](https://open-vsx.org/extension/nebula-themes/nebula-aura-theme)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-A modern light, dark and violet theme pack for VS Code, Cursor and Antigravity, inspired by Omni.
+A modern light, dark, violet and midnight theme pack for VS Code, Cursor and Antigravity, inspired by Omni.
 
 ## Themes
 
-- **Nebula Aura Light** — soft light background with violet and cyan accents
-- **Nebula Aura Dark** — calm dark theme with blue-gray tones
-- **Nebula Aura Violet** — deep violet background with magenta and mint highlights
+Nebula Aura Theme includes four carefully crafted themes:
 
-## Recommended for
+| Theme | Type | Style |
+| --- | ---: | --- |
+| Nebula Aura Light | Light | Clean and soft |
+| Nebula Aura Dark | Dark | Balanced and modern |
+| Nebula Aura Violet | Dark | Purple-inspired |
+| Nebula Aura Midnight | Dark | Deep night coding |
 
-- Developers who like violet, cyan and soft contrast themes
-- VS Code-compatible editors
-- Light, dark and deep violet workflows
+## Recommended For
+
+- VS Code
+- Cursor
+- Antigravity
+- Long coding sessions
+- Frontend, backend, cloud and data workflows
 
 ## Install
 
@@ -31,7 +38,7 @@ Install from the [Visual Studio Marketplace](https://marketplace.visualstudio.co
 
 Install from [Open VSX](https://open-vsx.org/extension/nebula-themes/nebula-aura-theme).
 
-After installing, open the Command Palette (`Ctrl+Shift+P`) → **Preferences: Color Theme** → choose **Nebula Aura Light**, **Nebula Aura Dark** or **Nebula Aura Violet**.
+After installing, open the Command Palette (`Ctrl+Shift+P`) → **Preferences: Color Theme** → choose any Nebula Aura theme.
 
 ## Compatibility
 
@@ -54,6 +61,10 @@ After installing, open the Command Palette (`Ctrl+Shift+P`) → **Preferences: C
 ### Nebula Aura Violet
 
 ![Nebula Aura Violet](./images/preview-violet.png)
+
+### Nebula Aura Midnight
+
+![Nebula Aura Midnight](./images/preview-midnight.png)
 
 ## Install from VSIX (local)
 

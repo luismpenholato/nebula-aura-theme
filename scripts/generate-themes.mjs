@@ -99,6 +99,37 @@ const palettes = {
     ],
     semanticHighlighting: true,
   },
+  midnight: {
+    name: 'Nebula Aura Midnight',
+    type: 'dark',
+    bg: '#0B1020',
+    fg: '#DDE7F3',
+    selection: '#253457',
+    comment: '#64748B',
+    cyan: '#22D3EE',
+    green: '#6EE7B7',
+    orange: '#FBBF24',
+    pink: '#C084FC',
+    purple: '#7C8CFF',
+    red: '#F87171',
+    yellow: '#A7F3D0',
+    lineHighlight: '#0E1528',
+    bgLight: '#070B16',
+    bgLighter: '#121A30',
+    bgDark: '#080D1A',
+    bgDarker: '#050810',
+    nonText: '#DDE7F318',
+    tabDrop: '#25345770',
+    tempQuotes: '#A7F3D0',
+    tempPropertyQuotes: '#7C8CFF',
+    cursor: '#22D3EE',
+    semanticHighlighting: true,
+    ansi: [
+      '#050810', '#F87171', '#6EE7B7', '#A7F3D0', '#7C8CFF', '#C084FC',
+      '#22D3EE', '#DDE7F3', '#64748B', '#FB7185', '#86EFAC', '#FDE68A',
+      '#93A8FF', '#D8B4FE', '#67E8F9', '#F0F6FC',
+    ],
+  },
 };
 
 function alpha(hex, opacity) {
@@ -940,6 +971,7 @@ const themeFiles = {
   light: 'nebula-aura-light-color-theme.json',
   dark: 'nebula-aura-dark-color-theme.json',
   violet: 'nebula-aura-violet-color-theme.json',
+  midnight: 'nebula-aura-midnight-color-theme.json',
 };
 
 if (!fs.existsSync(themesDir)) {
