@@ -11,6 +11,7 @@ on:
       - README.md
       - .vscodeignore
       - "themes/**"
+      - "scripts/**"
       - "images/**"
       - .github/workflows/ci.yml
       - .github/workflows/publish.yml

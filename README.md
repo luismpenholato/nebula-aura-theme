@@ -50,21 +50,52 @@ After installing, open the Command Palette (`Ctrl+Shift+P`) → **Preferences: C
 
 ## Previews
 
-### Nebula Aura Light
-
-![Nebula Aura Light](./images/preview-light.png)
-
-### Nebula Aura Dark
-
-![Nebula Aura Dark](./images/preview-dark.png)
-
-### Nebula Aura Violet
-
-![Nebula Aura Violet](./images/preview-violet.png)
-
-### Nebula Aura Midnight
-
-![Nebula Aura Midnight](./images/preview-midnight.png)
+<table>
+  <tr>
+    <td align="center">
+      <strong>Nebula Aura Light</strong><br />
+      <img
+        src="./images/preview-light.webp"
+        alt="Nebula Aura Light theme preview"
+        width="720"
+        height="470"
+      />
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>Nebula Aura Dark</strong><br />
+      <img
+        src="./images/preview-dark.webp"
+        alt="Nebula Aura Dark theme preview"
+        width="720"
+        height="470"
+      />
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>Nebula Aura Violet</strong><br />
+      <img
+        src="./images/preview-violet.webp"
+        alt="Nebula Aura Violet theme preview"
+        width="720"
+        height="470"
+      />
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>Nebula Aura Midnight</strong><br />
+      <img
+        src="./images/preview-midnight.webp"
+        alt="Nebula Aura Midnight theme preview"
+        width="720"
+        height="470"
+      />
+    </td>
+  </tr>
+</table>
 
 ## Install from VSIX (local)
 

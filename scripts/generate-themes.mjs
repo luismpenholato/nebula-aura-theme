@@ -179,7 +179,7 @@ function buildColors(p) {
     'input.border': p.bgDarker,
     'input.placeholderForeground': p.comment,
     'inputOption.activeBorder': p.purple,
-    'inputValidation.infoBorder': p.pink,
+    'inputValidation.infoBorder': p.cyan,
     'inputValidation.warningBorder': p.orange,
     'inputValidation.errorBorder': p.red,
     'badge.foreground': p.fg,
@@ -255,7 +255,9 @@ function buildColors(p) {
     'editorOverviewRuler.warningForeground': alpha(p.orange, 0.8),
     'editorOverviewRuler.infoForeground': alpha(p.cyan, 0.8),
     'editorError.foreground': p.red,
-    'editorWarning.foreground': p.cyan,
+    'editorWarning.foreground': p.orange,
+    'editorInfo.foreground': p.cyan,
+    'editorHint.foreground': p.comment,
     'editorGutter.modifiedBackground': alpha(p.cyan, 0.8),
     'editorGutter.addedBackground': alpha(p.green, 0.8),
     'editorGutter.deletedBackground': alpha(p.red, 0.8),
@@ -358,6 +360,42 @@ function buildColors(p) {
     'listFilterWidget.background': p.bgLight,
     'listFilterWidget.outline': p.bgLighter,
     'listFilterWidget.noMatchesOutline': p.red,
+    'editorStickyScroll.background': p.bg,
+    'editorStickyScrollHover.background': p.lineHighlight,
+    'editorInlayHint.foreground': alpha(p.fg, 0.72),
+    'editorInlayHint.background': alpha(p.bgDark, 0.92),
+    'editorInlayHint.typeForeground': p.cyan,
+    'editorInlayHint.typeBackground': alpha(p.selection, 0.45),
+    'editorInlayHint.parameterForeground': p.orange,
+    'editorInlayHint.parameterBackground': alpha(p.selection, 0.45),
+    'editorGhostText.foreground': alpha(p.fg, 0.45),
+    'inlineChat.background': p.bgDark,
+    'inlineChat.border': p.bgDarker,
+    'inlineChat.foreground': p.fg,
+    'chat.requestBackground': p.bgLight,
+    'chat.requestBorder': p.bgDarker,
+    'chat.slashCommandBackground': alpha(p.selection, 0.55),
+    'chat.slashCommandForeground': p.cyan,
+    'commandCenter.background': p.bgDark,
+    'commandCenter.foreground': p.fg,
+    'commandCenter.border': p.bgDarker,
+    'commandCenter.activeBackground': p.selection,
+    'commandCenter.activeForeground': p.fg,
+    'quickInput.background': p.bgDark,
+    'quickInput.foreground': p.fg,
+    'quickInputList.focusBackground': p.selection,
+    'quickInputList.focusForeground': p.fg,
+    'quickInputList.focusIconForeground': p.cyan,
+    'menu.background': p.bgLight,
+    'menu.foreground': p.fg,
+    'menu.selectionBackground': p.selection,
+    'menu.selectionForeground': p.fg,
+    'menu.separatorBackground': p.bgDarker,
+    'menu.border': p.bgDarker,
+    'keybindingLabel.background': alpha(p.selection, 0.5),
+    'keybindingLabel.foreground': p.fg,
+    'keybindingLabel.border': p.bgDarker,
+    'keybindingLabel.bottomBorder': p.bgDarker,
   };
 }
 
@@ -382,12 +420,18 @@ function buildSemanticTokenColors(p) {
     namespace: { foreground: p.purple },
     enumMember: { foreground: p.purple },
     decorator: { foreground: p.green, fontStyle: 'italic' },
+    event: { foreground: p.yellow },
     macro: { foreground: p.green },
     struct: { foreground: p.cyan },
     modifier: { foreground: p.pink },
     operator: { foreground: p.pink },
     regexp: { foreground: p.yellow },
     boolean: { foreground: p.purple, fontStyle: 'italic' },
+    '*.readonly': { foreground: p.fg, fontStyle: 'italic' },
+    '*.static': { foreground: p.fg },
+    '*.abstract': { foreground: p.cyan, fontStyle: 'italic' },
+    '*.deprecated': { foreground: p.comment, fontStyle: 'strikethrough' },
+    '*.declaration': { foreground: p.fg },
   };
 }
 
@@ -992,6 +1036,6 @@ for (const [key, filename] of Object.entries(themeFiles)) {
     theme.semanticTokenColors = buildSemanticTokenColors(palette);
   }
 
-  fs.writeFileSync(path.join(themesDir, filename), `${JSON.stringify(theme)}\n`);
+  fs.writeFileSync(path.join(themesDir, filename), `${JSON.stringify(theme, null, 2)}\n`);
   console.log(`Generated ${filename}`);
 }

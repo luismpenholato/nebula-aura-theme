@@ -5,6 +5,7 @@
 .vscodeignore
 node_modules/**
 *.vsix
+*.zip
 .env
 .env.*
 .vsce

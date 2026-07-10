@@ -21,12 +21,16 @@ npm install
 Run these commands and confirm they succeed:
 
 ```bash
+npm run themes:generate
+npm run themes:validate
 npm run list
 npm run package
 ```
 
+- `npm run themes:generate` — regenerate theme JSON files from `scripts/generate-themes.mjs`.
+- `npm run themes:validate` — verify required theme properties, colors and registrations.
 - `npm run list` — verify the files included in the package.
-- `npm run package` — confirm the extension packages without errors.
+- `npm run package` — generate, validate and package the extension as a `.vsix`.
 
 ## Guidelines
 

@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.5] - 2026-07-10
+
+### Added
+
+- Added semantic token colors for improved language-aware syntax highlighting, including modifier support for readonly, static, abstract, deprecated and declaration scopes.
+- Added theme validation for required properties, valid colors and registered theme files.
+- Added support for newer editor surfaces, including inlay hints, sticky scroll, quick input, chat interfaces and command center styling.
+- Added optimized WebP preview images for the README.
+
+### Changed
+
+- Improved diagnostic color consistency across light, dark, violet and midnight themes.
+- Updated warning, information and hint colors to better reflect their semantic roles.
+- Updated README previews to use optimized WebP images with consistent dimensions and display width.
+- Improved maintainability by formatting theme files for easier review.
+
+### Fixed
+
+- Fixed warning colors that were visually conflicting with informational colors.
+- Fixed inconsistent diagnostic hierarchy across theme variants.
+
 ## [0.0.4] - 2026-06-28
 
 ### Added
