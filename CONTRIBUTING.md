@@ -7,7 +7,7 @@ Thanks for your interest in Nebula Aura Theme.
 ```bash
 git clone https://github.com/luismpenholato/nebula-aura-theme.git
 cd nebula-aura-theme
-npm install
+npm ci
 ```
 
 ## Test in the Extension Development Host
@@ -21,12 +21,14 @@ npm install
 Run these commands and confirm they succeed:
 
 ```bash
+npm ci
 npm run themes:generate
 npm run themes:validate
 npm run list
 npm run package
 ```
 
+- `npm ci` — install dependencies from the lockfile for reproducible validation.
 - `npm run themes:generate` — regenerate theme JSON files from `scripts/generate-themes.mjs`.
 - `npm run themes:validate` — verify required theme properties, colors and registrations.
 - `npm run list` — verify the files included in the package.
@@ -34,8 +36,10 @@ npm run package
 
 ## Guidelines
 
+- Open an issue before large visual changes so direction can be discussed early.
 - Do **not** commit `.vsix` files. They are generated locally and attached to GitHub Releases when needed.
 - If you change theme colors, include updated screenshots in `images/` and update the README previews when relevant.
+- Update [CHANGELOG.md](CHANGELOG.md) when your change is user-facing and belongs in a release.
 - Keep attribution intact. Do not remove or alter [NOTICE](NOTICE) or the credits section in the README.
 
 ## Questions

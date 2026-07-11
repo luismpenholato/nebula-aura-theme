@@ -34,6 +34,9 @@ jobs:
       - name: Generate themes
         run: npm run themes:generate
 
+      - name: Verify generated themes are up to date
+        run: git diff --exit-code
+
       - name: Validate themes
         run: npm run themes:validate
 

@@ -1,0 +1,74 @@
+name: Theme Request
+description: Suggest a visual improvement, language/token support or contrast adjustment
+title: "[Theme Request]: "
+labels:
+  - enhancement
+body:
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Affected theme
+      options:
+        - Nebula Aura Light
+        - Nebula Aura Dark
+        - Nebula Aura Violet
+        - Nebula Aura Midnight
+        - All themes
+    validations:
+      required: true
+
+  - type: input
+    id: language
+    attributes:
+      label: Language or file type
+      description: e.g. TypeScript, C#, Markdown, terminal
+      placeholder: "TypeScript"
+    validations:
+      required: true
+
+  - type: input
+    id: token
+    attributes:
+      label: Token or visual element
+      description: e.g. string literal, keyword, sidebar background
+      placeholder: "string literal"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: Current appearance
+      description: How does it look today?
+    validations:
+      required: true
+
+  - type: textarea
+    id: desired
+    attributes:
+      label: Desired appearance
+      description: How should it look instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Rationale
+      description: Why would this change improve the theme?
+    validations:
+      required: true
+
+  - type: textarea
+    id: example
+    attributes:
+      label: Screenshot or code example
+      description: Attach a screenshot or paste a short code sample
+
+  - type: checkboxes
+    id: readability
+    attributes:
+      label: Checklist
+      options:
+        - label: This suggestion considers readability and contrast
+          required: true

@@ -1,12 +1,23 @@
+# Dependencies
 node_modules/
+
+# Extension package
 *.vsix
+
+# Environment and local secrets
 .env
 .env.*
 .vsce
+
+# Logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# OS files
 .DS_Store
 Thumbs.db
+
+# Local IDE settings
 .vscode/

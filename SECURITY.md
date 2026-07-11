@@ -12,13 +12,22 @@ Nebula Aura Theme is a local VS Code theme extension. It applies color themes in
 
 ## Reporting a vulnerability
 
-If you believe you found a security issue, please report it via [GitHub Issues](https://github.com/luismpenholato/nebula-aura-theme/issues).
+**Please do not report security vulnerabilities through public GitHub Issues.**
+
+If you believe you found a security issue, report it responsibly using one of the following options:
+
+1. **GitHub Security Advisories** (preferred) — use the [Report a vulnerability](https://github.com/luismpenholato/nebula-aura-theme/security/advisories/new) flow on this repository, if available.
+2. **Private contact** — reach the maintainer through private contact on [GitHub](https://github.com/luismpenholato).
 
 Include:
 
 - A clear description of the issue
 - Steps to reproduce, if applicable
 - Your editor and extension version
+
+## Supported versions
+
+Security fixes are provided for the latest published release when applicable. Older versions may not receive patches.
 
 ## Out of scope
 

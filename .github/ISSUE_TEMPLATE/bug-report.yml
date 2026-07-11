@@ -1,0 +1,112 @@
+name: Bug Report
+description: Report a problem with Nebula Aura Theme
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: dropdown
+    id: editor
+    attributes:
+      label: Editor
+      description: Which editor are you using?
+      options:
+        - Visual Studio Code
+        - Cursor
+        - Antigravity
+        - Outro
+    validations:
+      required: true
+
+  - type: input
+    id: editor-version
+    attributes:
+      label: Editor version
+      description: e.g. 1.96.0
+      placeholder: "1.96.0"
+    validations:
+      required: true
+
+  - type: input
+    id: extension-version
+    attributes:
+      label: Nebula Aura Theme version
+      description: Extension version from the Extensions panel
+      placeholder: "0.0.6"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Selected theme
+      options:
+        - Nebula Aura Light
+        - Nebula Aura Dark
+        - Nebula Aura Violet
+        - Nebula Aura Midnight
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      description: e.g. Windows 11, macOS 15, Ubuntu 24.04
+      placeholder: "Windows 11"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Problem description
+      description: What went wrong?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: How can we reproduce the issue?
+      placeholder: |
+        1. Open ...
+        2. Select theme ...
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: input
+    id: language
+    attributes:
+      label: Language or file extension
+      description: Where the issue occurs, if applicable
+      placeholder: "TypeScript, .cshtml, JSON"
+
+  - type: textarea
+    id: extensions
+    attributes:
+      label: Other extensions that may interfere
+      description: List extensions that might affect syntax highlighting or theming
+
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot
+      description: Drag and drop an image here, if helpful
+
+  - type: checkboxes
+    id: search
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues before opening this report
+          required: true
