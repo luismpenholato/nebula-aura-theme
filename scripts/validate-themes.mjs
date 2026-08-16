@@ -58,6 +58,166 @@ const requiredSemanticModifiers = [
   "*.declaration",
 ];
 
+const forbiddenColorKeys = [
+  "notification.background",
+  "notification.foreground",
+  "notification.buttonBackground",
+  "notification.buttonForeground",
+  "notification.buttonHoverBackground",
+  "notification.errorBackground",
+  "notification.errorForeground",
+  "notification.infoBackground",
+  "notification.infoForeground",
+  "notification.warningBackground",
+  "notification.warningForeground",
+  "settings.modifiedItemForeground",
+];
+
+const requiredModernColorKeys = {
+  activityBarHorizontal: [
+    "activityBar.border",
+    "activityBar.dropBorder",
+    "activityBar.activeFocusBorder",
+    "activityBarTop.foreground",
+    "activityBarTop.inactiveForeground",
+    "activityBarTop.activeBorder",
+    "activityBarTop.dropBorder",
+    "activityBarTop.background",
+    "activityBarTop.activeBackground",
+    "activityWarningBadge.foreground",
+    "activityWarningBadge.background",
+    "activityErrorBadge.foreground",
+    "activityErrorBadge.background",
+    "sideBarActivityBarTop.border",
+  ],
+  chat: [
+    "chat.avatarBackground",
+    "chat.avatarForeground",
+    "chat.editedFileForeground",
+    "chat.linesAddedForeground",
+    "chat.linesRemovedForeground",
+    "chat.requestCodeBorder",
+    "chat.requestBubbleBackground",
+    "chat.requestBubbleHoverBackground",
+    "chat.checkpointSeparator",
+    "chat.thinkingShimmer",
+    "chatManagement.sashBorder",
+  ],
+  agentSessions: [
+    "agentSessionReadIndicator.foreground",
+    "agentSessionSelectedBadge.border",
+    "agentSessionSelectedUnfocusedBadge.border",
+    "agentStatusIndicator.background",
+    "aiCustomizationManagement.sashBorder",
+  ],
+  inlineChat: [
+    "inlineChat.shadow",
+    "inlineChatInput.border",
+    "inlineChatInput.focusBorder",
+    "inlineChatInput.placeholderForeground",
+    "inlineChatInput.background",
+    "inlineChatDiff.inserted",
+    "inlineChatDiff.removed",
+  ],
+  inlineEdit: [
+    "inlineEdit.gutterIndicator.primaryBorder",
+    "inlineEdit.gutterIndicator.primaryForeground",
+    "inlineEdit.gutterIndicator.primaryBackground",
+    "inlineEdit.gutterIndicator.secondaryBorder",
+    "inlineEdit.gutterIndicator.secondaryForeground",
+    "inlineEdit.gutterIndicator.secondaryBackground",
+    "inlineEdit.gutterIndicator.successfulBorder",
+    "inlineEdit.gutterIndicator.successfulForeground",
+    "inlineEdit.gutterIndicator.successfulBackground",
+    "inlineEdit.gutterIndicator.background",
+    "inlineEdit.originalBackground",
+    "inlineEdit.modifiedBackground",
+    "inlineEdit.originalChangedLineBackground",
+    "inlineEdit.originalChangedTextBackground",
+    "inlineEdit.modifiedChangedLineBackground",
+    "inlineEdit.modifiedChangedTextBackground",
+    "inlineEdit.originalBorder",
+    "inlineEdit.modifiedBorder",
+    "inlineEdit.tabWillAcceptModifiedBorder",
+    "inlineEdit.tabWillAcceptOriginalBorder",
+  ],
+  diff: [
+    "diffEditor.border",
+    "diffEditor.insertedLineBackground",
+    "diffEditor.removedLineBackground",
+    "multiDiffEditor.headerBackground",
+    "multiDiffEditor.background",
+    "multiDiffEditor.border",
+  ],
+  scmGraph: [
+    "scmGraph.foreground1",
+    "scmGraph.foreground2",
+    "scmGraph.foreground3",
+    "scmGraph.foreground4",
+    "scmGraph.foreground5",
+    "scmGraph.historyItemRefColor",
+    "scmGraph.historyItemRemoteRefColor",
+    "scmGraph.historyItemBaseRefColor",
+  ],
+  terminal: [
+    "terminal.border",
+    "terminal.findMatchBackground",
+    "terminal.dropBackground",
+    "terminalStickyScroll.background",
+    "terminalCommandDecoration.successBackground",
+    "terminalCommandDecoration.errorBackground",
+  ],
+  testing: [
+    "testing.iconPassed",
+    "testing.iconFailed",
+    "testing.iconErrored",
+    "testing.coveredBackground",
+    "testing.uncoveredBackground",
+    "testing.runAction",
+  ],
+  notebook: [
+    "notebook.editorBackground",
+    "notebook.cellEditorBackground",
+    "notebook.focusedCellBorder",
+    "notebook.selectedCellBackground",
+    "notebookStatusErrorIcon.foreground",
+    "notebookStatusSuccessIcon.foreground",
+  ],
+};
+
+const requiredTransparentColorKeys = [
+  "list.dropBackground",
+  "sideBar.dropBackground",
+  "editor.selectionHighlightBackground",
+  "editor.foldBackground",
+  "editor.hoverHighlightBackground",
+  "editor.findRangeHighlightBackground",
+  "editor.rangeHighlightBackground",
+  "diffEditor.insertedTextBackground",
+  "diffEditor.removedTextBackground",
+  "diffEditor.insertedLineBackground",
+  "diffEditor.removedLineBackground",
+  "merge.currentContentBackground",
+  "merge.incomingContentBackground",
+  "merge.commonContentBackground",
+  "inlineChatDiff.inserted",
+  "inlineChatDiff.removed",
+  "inlineEdit.originalBackground",
+  "inlineEdit.modifiedBackground",
+  "inlineEdit.originalChangedLineBackground",
+  "inlineEdit.originalChangedTextBackground",
+  "inlineEdit.modifiedChangedLineBackground",
+  "inlineEdit.modifiedChangedTextBackground",
+  "editorCommentsWidget.rangeBackground",
+  "editorCommentsWidget.rangeActiveBackground",
+  "testing.coveredBackground",
+  "testing.uncoveredBackground",
+  "testing.uncoveredBranchBackground",
+  "terminal.dropBackground",
+  "terminal.findMatchBackground",
+  "terminal.findMatchHighlightBackground",
+];
+
 const errors = [];
 
 function report(file, property, problem) {
@@ -71,6 +231,37 @@ function normalizeColor(value) {
 function validateColor(file, propertyPath, color) {
   if (!colorPattern.test(color)) {
     report(file, propertyPath, `invalid color format "${color}"`);
+  }
+}
+
+function getHexAlpha(color) {
+  if (typeof color !== "string" || !color.startsWith("#")) {
+    return null;
+  }
+
+  const hex = color.slice(1);
+  if (hex.length === 8) {
+    return hex.slice(6).toUpperCase();
+  }
+  if (hex.length === 4) {
+    return `${hex[3]}${hex[3]}`.toUpperCase();
+  }
+  return null;
+}
+
+function validateTransparentColor(file, propertyPath, color) {
+  if (!colorPattern.test(color)) {
+    return;
+  }
+
+  const alpha = getHexAlpha(color);
+  if (alpha === null) {
+    report(file, propertyPath, `must include an alpha channel, found "${color}"`);
+    return;
+  }
+
+  if (alpha === "FF") {
+    report(file, propertyPath, `must not be fully opaque (alpha FF), found "${color}"`);
   }
 }
 
@@ -121,6 +312,33 @@ function validateThemeFile(theme, relativePath) {
     if (!(key in theme.colors)) {
       report(relativePath, `colors.${key}`, "missing required color");
     }
+  }
+
+  for (const key of forbiddenColorKeys) {
+    if (key in theme.colors) {
+      report(relativePath, `colors.${key}`, "deprecated color identifier must be removed");
+    }
+  }
+
+  for (const [group, keys] of Object.entries(requiredModernColorKeys)) {
+    for (const key of keys) {
+      if (!(key in theme.colors)) {
+        report(relativePath, `colors.${key}`, `missing required modern color (${group})`);
+      }
+    }
+  }
+
+  for (const key of requiredTransparentColorKeys) {
+    if (!(key in theme.colors)) {
+      report(relativePath, `colors.${key}`, "missing required transparent color");
+      continue;
+    }
+
+    validateTransparentColor(
+      relativePath,
+      `colors.${key}`,
+      normalizeColor(theme.colors[key]),
+    );
   }
 
   const errorColor = normalizeColor(theme.colors["editorError.foreground"]);

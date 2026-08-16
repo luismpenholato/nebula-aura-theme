@@ -30,7 +30,7 @@ npm run package
 
 - `npm ci` — install dependencies from the lockfile for reproducible validation.
 - `npm run themes:generate` — regenerate theme JSON files from `scripts/generate-themes.mjs`.
-- `npm run themes:validate` — verify required theme properties, colors and registrations.
+- `npm run themes:validate` — verify required theme properties, colors, modern tokens, deprecated identifiers, overlay transparency and registrations.
 - `npm run list` — verify the files included in the package.
 - `npm run package` — generate, validate and package the extension as a `.vsix`.
 

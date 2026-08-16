@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.0.7] - 2026-08-16
+
+### Added
+
+- Modern Chat and Agent Session colors.
+- Inline Edit and Inline Chat styling.
+- Horizontal Activity Bar support for current Cursor layouts.
+- Multi Diff, SCM Graph, terminal, testing, notebook and comments colors.
+- Validation for modern, deprecated and transparency-sensitive theme colors.
+
+### Changed
+
+- Improved support for current VS Code and VS Code-based IDE interfaces.
+- Improved overlay transparency across selections, diffs, drag and drop, comments and AI edits.
+- Updated notification colors to the current VS Code color identifiers.
+
+### Removed
+
+- Deprecated and unsupported notification and Settings color identifiers.
+
 ## [0.0.6] - 2026-07-11
 
 ### Added
