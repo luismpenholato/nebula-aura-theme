@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { validateThemeContrast } from "./theme-contrast.mjs";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const packagePath = path.join(rootDir, "package.json");
@@ -27,6 +28,7 @@ const requiredColorKeys = [
   "editorError.foreground",
   "editorWarning.foreground",
   "editorInfo.foreground",
+  "editorBracketMatch.foreground",
 ];
 
 const requiredSemanticTokens = [
@@ -379,6 +381,9 @@ function validateThemeFile(theme, relativePath) {
   }
 
   collectSemanticColors(theme.semanticTokenColors, relativePath, "semanticTokenColors");
+  for (const { property, problem } of validateThemeContrast(theme)) {
+    report(relativePath, property, problem);
+  }
 }
 
 const packageJson = JSON.parse(await readFile(packagePath, "utf8"));

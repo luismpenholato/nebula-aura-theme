@@ -9,7 +9,7 @@
 
 A modern light, dark, violet and midnight theme pack for VS Code, Cursor and Antigravity, inspired by Omni.
 
-> More than 15,000 downloads across supported extension marketplaces.
+> More than 20,000 downloads across supported extension marketplaces.
 
 ## Install
 
@@ -87,7 +87,7 @@ Nebula Aura Theme includes four carefully crafted variants:
 | --- | --- |
 | [Visual Studio Code](https://code.visualstudio.com/) | Full |
 | [Cursor](https://cursor.com/) | Full |
-| [Antigravity](https://antigravity.dev/) | Full |
+| [Antigravity](https://antigravity.google/) | Full |
 
 ## Install from VSIX
 

@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.0.8] - 2026-08-30
+
+### Added
+
+- Explicit foreground color for matching brackets in supported VS Code-based editors.
+- Automated contrast checks and regression tests for editor text, base comments, docstrings and matching brackets, including transparent highlights.
+- A manual visual compatibility checklist for VS Code, Cursor and Antigravity.
+
+### Changed
+
+- Improved comment and secondary UI colors while preserving each variant's palette. Base comments now meet a minimum contrast of 4.5:1 against the editor and active-line backgrounds in all four variants.
+- Updated the README download milestone to more than 20,000 downloads and corrected the Antigravity website link.
+
 ## [0.0.7] - 2026-08-16
 
 ### Added
