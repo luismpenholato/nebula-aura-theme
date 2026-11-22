@@ -153,17 +153,15 @@ For visual changes, include updated screenshots whenever applicable.
 
 ## Support the project
 
-Nebula Aura Theme is free and open source.
+Nebula Aura Theme is free and open source (MIT).
 
-If the theme improves your development experience, consider supporting its continued maintenance through [GitHub Sponsors](https://github.com/sponsors/luismpenholato).
+If the theme improves your development experience, consider supporting continued maintenance through [GitHub Sponsors](https://github.com/sponsors/luismpenholato).
 
-Your support helps fund:
+Sponsors fund this theme pack and **[Verdicspec](https://github.com/luismpenholato/verdicspec)** (specification-driven method for AI coding agents):
 
-- theme improvements;
-- editor compatibility updates;
-- documentation;
-- issue resolution;
-- ongoing open-source maintenance.
+- theme improvements and editor compatibility;
+- Verdicspec releases, skills and docs;
+- issue triage and long-term open-source maintenance.
 
 ## Credits
 
